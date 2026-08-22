@@ -1,80 +1,80 @@
-<script setup>
-useHead({
-  meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-  ],
-  link: [
-    { rel: 'icon', href: '/favicon.ico' }
-  ],
-  htmlAttrs: {
-    lang: 'en'
+<script setup lang="ts">
+import type { NavigationMenuItem } from '@nuxt/ui'
+
+const route = useRoute()
+
+const headerItems = computed<NavigationMenuItem[]>(() => [
+  {
+    label: 'Home',
+    to: '/',
+    active: route.path === '/'
+  },
+  {
+    label: 'Training',
+    to: '/training',
+    active: route.path.includes('/training')
+  },
+  {
+    label: 'Reviews',
+    to: '/reviews',
+    active: route.path.includes('/reviews')
   }
-})
+])
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterCard: 'summary_large_image'
-})
+const footerItems: NavigationMenuItem[] = [
+  {
+    label: 'Figma Kit',
+    to: 'https://go.nuxt.com/figma-ui',
+    target: '_blank'
+  },
+  {
+    label: 'Playground',
+    to: 'https://stackblitz.com/edit/nuxt-ui',
+    target: '_blank'
+  },
+  {
+    label: 'Releases',
+    to: 'https://github.com/nuxt/ui/releases',
+    target: '_blank'
+  }
+]
 </script>
 
 <template>
-  <UApp>
+  <UApp class="flex h-dvh flex-col">
     <UHeader>
-      <template #left>
-        <NuxtLink
-          to="/"
-          class="focus-visible:outline-3 outline-primary/25 rounded-md p-1 -ms-1"
-        >
-          <AppLogo class="w-auto h-6 shrink-0" />
-        </NuxtLink>
-
-        <TemplateMenu />
+      <template #title>
+        <Logo class="h-6 w-auto" />
       </template>
+
+      <UNavigationMenu :items="headerItems" />
 
       <template #right>
         <UColorModeButton />
-
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
       </template>
     </UHeader>
 
-    <UMain>
+    <UMain class="flex-1 overflow-y-auto">
       <NuxtPage />
     </UMain>
-
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
-
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
-        </p>
-      </template>
-
-      <template #right>
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UFooter>
   </UApp>
+
+  <UFooter class="fixed bottom-0 left-0 right-0 z-10">
+    <template #left>
+      <p class="text-muted text-sm">
+        Cerebro-volley | Copyright © {{ new Date().getFullYear() }}
+      </p>
+    </template>
+
+    <UNavigationMenu :items="footerItems" variant="link" />
+
+    <template #right>
+      <UButton icon="i-simple-icons-discord" color="neutral" variant="ghost" to="https://go.nuxt.com/discord"
+        target="_blank" aria-label="Discord" />
+      <UButton icon="i-simple-icons-x" color="neutral" variant="ghost" to="https://go.nuxt.com/x" target="_blank"
+        aria-label="X" />
+      <UButton icon="i-simple-icons-github" color="neutral" variant="ghost" to="https://github.com/nuxt/nuxt"
+        target="_blank" aria-label="GitHub" />
+    </template>
+  </UFooter>
 </template>

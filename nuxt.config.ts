@@ -3,9 +3,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
-    '@nuxt/image',
-    '@nuxtjs/supabase',
-    '@nuxtjs/tailwindcss'
+    '@nuxt/image'
+    // '@nuxtjs/supabase'
   ],
 
   devtools: {
@@ -19,6 +18,18 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2026-06-30',
+
+  postcss: {
+    plugins: {
+      // Remove the old v3 plugin:
+      // tailwindcss: {},
+
+      // Add the new v4 plugin:
+      '@tailwindcss/postcss': {},
+
+      'autoprefixer': {}
+    }
+  },
 
   eslint: {
     config: {
