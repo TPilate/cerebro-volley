@@ -1,6 +1,6 @@
 <template>
   <div>
-    Hello reviews
+    WORK IN PROGRESS
   </div>
 </template>
 

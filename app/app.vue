@@ -66,6 +66,7 @@ const footerItems: NavigationMenuItem[] = [
       </p>
     </template>
 
+    <!--
     <UNavigationMenu :items="footerItems" variant="link" />
 
     <template #right>
@@ -76,5 +77,6 @@ const footerItems: NavigationMenuItem[] = [
       <UButton icon="i-simple-icons-github" color="neutral" variant="ghost" to="https://github.com/nuxt/nuxt"
         target="_blank" aria-label="GitHub" />
     </template>
+    -->
   </UFooter>
 </template>

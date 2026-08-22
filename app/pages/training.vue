@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Hello in Training</h1>
+    WORK IN PROGRESS
   </div>
 </template>
 
