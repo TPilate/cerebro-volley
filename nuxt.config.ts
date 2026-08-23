@@ -4,8 +4,9 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@nuxt/image',
-    '@vercel/analytics'
-    // '@nuxtjs/supabase'
+    '@vercel/analytics',
+    '@nuxt/scripts',
+    '@nuxtjs/supabase'
   ],
 
   devtools: {
@@ -13,6 +14,21 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  runtimeConfig: {
+    public: {
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseKey: process.env.SUPABASE_KEY
+    }
+  },
+
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/']
+    }
+  },
 
   routeRules: {
     '/': { prerender: true }
@@ -38,6 +54,12 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  scripts: {
+    registry: {
+      instagramEmbed: {}
     }
   }
 })
