@@ -17,7 +17,7 @@ const links = ref<ButtonProps[]>([
 </script>
 
 <template>
-  <UPageHero title="Cerebro VolleyBall"
+  <UPageHero class="py-10 sm:py-12" title="Cerebro VolleyBall"
     description="This web app has been created to regroup data for volleyball player trying to search to improve there game."
-    headline="Current version | v.0.1" :links="links" />
+    headline="Current version | v.0.2" :links="links" />
 </template>

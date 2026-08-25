@@ -1,40 +1,31 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/eslint',
-    '@nuxt/ui',
-    '@nuxt/image',
-    '@vercel/analytics',
-    '@nuxt/scripts',
-    '@nuxtjs/supabase'
+    "@nuxt/eslint",
+    "@nuxt/ui",
+    "@nuxt/image",
+    "@vercel/analytics",
+    "@nuxt/scripts",
   ],
 
   devtools: {
-    enabled: true
+    enabled: true,
   },
 
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css"],
 
   runtimeConfig: {
-    public: {
-      supabaseUrl: process.env.SUPABASE_URL,
-      supabaseKey: process.env.SUPABASE_KEY
-    }
-  },
-
-  supabase: {
-    redirectOptions: {
-      login: '/login',
-      callback: '/confirm',
-      exclude: ['/']
-    }
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabasePublishableKey: process.env.SUPABASE_PUBLISHABLE_KEY,
+    supabaseSecretKey: process.env.SUPABASE_SECRET_KEY,
+    supabaseJwksUrl: process.env.SUPABASE_JWKS_URL,
   },
 
   routeRules: {
-    '/': { prerender: true }
+    "/": { prerender: true },
   },
 
-  compatibilityDate: '2026-06-30',
+  compatibilityDate: "2026-06-30",
 
   postcss: {
     plugins: {
@@ -42,24 +33,27 @@ export default defineNuxtConfig({
       // tailwindcss: {},
 
       // Add the new v4 plugin:
-      '@tailwindcss/postcss': {},
+      "@tailwindcss/postcss": {},
 
-      'autoprefixer': {}
-    }
+      autoprefixer: {},
+    },
   },
 
   eslint: {
     config: {
       stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
-    }
+        commaDangle: "never",
+        braceStyle: "1tbs",
+      },
+    },
   },
 
   scripts: {
     registry: {
-      instagramEmbed: {}
-    }
-  }
-})
+      instagramEmbed: {},
+      youtubePlayer: {
+        trigger: 'onNuxtReady',
+      }
+    },
+  },
+});
